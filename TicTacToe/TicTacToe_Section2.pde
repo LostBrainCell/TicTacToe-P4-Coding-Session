@@ -1,11 +1,8 @@
-//Tic Tac Toe
+//Variables
+/*
 int[] board = new int[9]; // 0 = empty, 1 = X, 2 = O
 int currentPlayer = 1; // 1 = X, 2 = O
 int cellSize; // Size of each cell, calculated dynamically
-float[] divX = new float[6];
-float[] divY = new float[10];
-float divWidth;
-float divHeight;
 
 void setup() {
   //fullScreen(); // Use the full screen
@@ -14,45 +11,14 @@ void setup() {
   int appHeight = height; //displayHeight
   int shorterSide = ( appWidth > appHeight ) ? appHeight : appWidth ;
   cellSize = shorterSide / 3; // Calculate cell size based on screen width
-  //Creating the Board
-  float widthPadding;
-  widthPadding = ( appWidth - shorterSide ) /2;
-  divWidth = divHeight = shorterSide / 6;
-  divX[0] = widthPadding;
-  divX[1] = divX[0] + divWidth;
-  divX[2] = divX[1] + divWidth;
-  divX[3] = divX[2] + divWidth;
-  divX[4] = divX[3] + divWidth;
-  divX[5] = divX[4] + divWidth;
-  divX[6] = divX[5] + divWidth;
-  //
-  divY[0] = 0;
-  divY[1] = divX[0] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  divY[2] = divX[1] + divWidth;
-  
-
-  /*
+  //Creating the Board, with Scoreboard
+  int padding;
   if ( appWidth > appHeight ) {
-    widthPadding = ( appWidth - shorterSide ) /2;
-      
-      for () {
-
-      divX[], divY[], divWidth[], divHeight[]
-        rect(divX[0], divY[0], divWidth[], divHeight[]);
-    }
+    padding = ( appWidth*1/2 - cellSize*3) / 2 ;
+    
   } else {
   }
-  */
+  noLoop();
 }
 
 void draw() {
@@ -94,3 +60,4 @@ void mousePressed() {
     redraw();
   }
 }
+*/
