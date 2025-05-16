@@ -6,7 +6,7 @@ float[] divX = new float[6];
 float[] divY = new float[6];
 float divWidth;
 float divHeight;
-
+//
 void setup() {
   // fullScreen(); // Use the full screen
   size(700, 700);
@@ -29,7 +29,7 @@ void setup() {
     divY[i] = i * divHeight;
   }
 }
-
+//
 void draw() {
   background(255); // White background
   stroke(0); // Black lines
@@ -43,7 +43,6 @@ void draw() {
     // Horizontal lines: Extend from the left (x = 0) to the right (x = width)
     line(0, divY[i * 2], width, divY[i * 2]);
   }
-
 
   // Draw the Xs and Os
   for (int i = 0; i < board.length; i++) {
@@ -59,14 +58,47 @@ void draw() {
     }
   }
 }
-
+//
 void drawX(float x, float y) {
   float offset = cellSize * 0.3;
   line(x - offset, y - offset, x + offset, y + offset);
   line(x + offset, y - offset, x - offset, y + offset);
 }
-
+//
 void drawO(float x, float y) {
   float radius = cellSize * 0.3;
   ellipse(x, y, radius * 2, radius * 2);
+}
+//
+void mousePressed() {
+  // Determine which cell was clicked
+  int col = -1;
+  int row = -1;
+
+  // Check which column the mouse is in
+  for (int i = 0; i < 3; i++) {
+    if (mouseX >= divX[i * 2] && mouseX <= divX[i * 2 + 2]) { // Include edges
+      col = i;
+      break;
+    }
+  }
+
+  // Check which row the mouse is in
+  for (int i = 0; i < 3; i++) {
+    if (mouseY >= divY[i * 2] && mouseY <= divY[i * 2 + 2]) { // Include edges
+      row = i;
+      break;
+    }
+  }
+
+  // If a valid cell was clicked
+  if (col != -1 && row != -1) {
+    int cellIndex = row * 3 + col; // Convert row and column to board index
+
+    // Check if the cell is empty
+    if (board[cellIndex] == 0) {
+      board[cellIndex] = currentPlayer; // Mark the cell for the current player
+      currentPlayer = (currentPlayer == 1) ? 2 : 1; // Switch player
+    }
+  }
 }
