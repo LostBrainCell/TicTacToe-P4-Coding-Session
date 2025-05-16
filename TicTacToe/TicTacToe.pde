@@ -9,7 +9,7 @@ float divHeight;
 
 void setup() {
   // fullScreen(); // Use the full screen
-  size(700, 500);
+  size(700, 700);
   int appWidth = width; // displayWidth
   int appHeight = height; // displayHeight
   int shorterSide = (appWidth > appHeight) ? appHeight : appWidth;
@@ -37,11 +37,13 @@ void draw() {
 
   // Draw the grid
   for (int i = 1; i < 3; i++) {
-    // Vertical lines
-    line(divX[i * 2], divY[0], divX[i * 2], divY[5]);
-    // Horizontal lines
-    line(divX[0], divY[i * 2], divX[5], divY[i * 2]);
+    // Vertical lines: Extend from the top (y = 0) to the bottom (y = height)
+    line(divX[i * 2], 0, divX[i * 2], height);
+
+    // Horizontal lines: Extend from the left (x = 0) to the right (x = width)
+    line(0, divY[i * 2], width, divY[i * 2]);
   }
+
 
   // Draw the Xs and Os
   for (int i = 0; i < board.length; i++) {
