@@ -9,40 +9,38 @@ float divHeight;
 //
 void setup() {
   // fullScreen(); // Use the full screen
-  size(800, 800);
+  size(700, 700);
   int appWidth = width; // displayWidth
   int appHeight = height; // displayHeight
   int shorterSide = (appWidth > appHeight) ? appHeight : appWidth;
   cellSize = shorterSide / 3; // Calculate cell size based on screen width
 
-  // Creating the Board
+  // Padding for centering
   float widthPadding = (appWidth - shorterSide) / 2;
   float heightPadding = (appHeight - shorterSide) / 2;
-  divWidth = divHeight = shorterSide / 3;
 
   // Initialize divX
-  for (int i = 0; i < divX.length; i++) {
-    divX[i] = widthPadding + i * divWidth;
+  for (int i = 0; i < 4; i++) {
+    divX[i] = widthPadding + i * (shorterSide / 3);
   }
 
   // Initialize divY
-  for (int i = 0; i < divY.length; i++) {
-    divY[i] = heightPadding + i * divHeight;
+  for (int i = 0; i < 4; i++) {
+    divY[i] = heightPadding + i * (shorterSide / 3);
   }
+
+  divWidth = divHeight = shorterSide / 3;
 }
-//
+
 void draw() {
   background(255); // White background
   stroke(0); // Black lines
   strokeWeight(2);
 
-  // Draw the grid
+   // Draw the grid
   for (int i = 1; i < 3; i++) {
-    // Vertical lines
-    line(divX[i], 0, divX[i], height);
-
-    // Horizontal lines
-    line(0, divY[i], width, divY[i]);
+    line(divX[i], 0, divX[i], height); // Vertical lines
+    line(0, divY[i], width, divY[i]); // Horizontal lines
   }
 
   // Draw the Xs and Os
@@ -78,7 +76,7 @@ void mousePressed() {
 
   // Check which column the mouse is in
   for (int i = 0; i < 3; i++) {
-    if (mouseX >= divX[i * 2] && mouseX <= divX[i * 2 + 2]) { // Include edges
+    if (mouseX >= divX[i] && mouseX < divX[i + 1]) { // Use < for upper bound
       col = i;
       break;
     }
@@ -86,7 +84,7 @@ void mousePressed() {
 
   // Check which row the mouse is in
   for (int i = 0; i < 3; i++) {
-    if (mouseY >= divY[i * 2] && mouseY <= divY[i * 2 + 2]) { // Include edges
+    if (mouseY >= divY[i] && mouseY < divY[i + 1]) { // Use < for upper bound
       row = i;
       break;
     }
