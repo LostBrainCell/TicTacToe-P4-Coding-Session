@@ -9,7 +9,7 @@ float divHeight;
 //
 void setup() {
   // fullScreen(); // Use the full screen
-  size(700, 700);
+  size(800, 800);
   int appWidth = width; // displayWidth
   int appHeight = height; // displayHeight
   int shorterSide = (appWidth > appHeight) ? appHeight : appWidth;
@@ -17,7 +17,8 @@ void setup() {
 
   // Creating the Board
   float widthPadding = (appWidth - shorterSide) / 2;
-  divWidth = divHeight = shorterSide / 6;
+  float heightPadding = (appHeight - shorterSide) / 2;
+  divWidth = divHeight = shorterSide / 3;
 
   // Initialize divX
   for (int i = 0; i < divX.length; i++) {
@@ -26,7 +27,7 @@ void setup() {
 
   // Initialize divY
   for (int i = 0; i < divY.length; i++) {
-    divY[i] = i * divHeight;
+    divY[i] = heightPadding + i * divHeight;
   }
 }
 //
@@ -37,19 +38,19 @@ void draw() {
 
   // Draw the grid
   for (int i = 1; i < 3; i++) {
-    // Vertical lines: Extend from the top (y = 0) to the bottom (y = height)
-    line(divX[i * 2], 0, divX[i * 2], height);
+    // Vertical lines
+    line(divX[i], 0, divX[i], height);
 
-    // Horizontal lines: Extend from the left (x = 0) to the right (x = width)
-    line(0, divY[i * 2], width, divY[i * 2]);
+    // Horizontal lines
+    line(0, divY[i], width, divY[i]);
   }
 
   // Draw the Xs and Os
   for (int i = 0; i < board.length; i++) {
     int row = i / 3;
     int col = i % 3;
-    float x = divX[col * 2 + 1];
-    float y = divY[row * 2 + 1];
+    float x = divX[col] + divWidth / 2; // Center of the cell
+    float y = divY[row] + divHeight / 2; // Center of the cell
 
     if (board[i] == 1) {
       drawX(x, y);
