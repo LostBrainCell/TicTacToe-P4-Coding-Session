@@ -9,7 +9,7 @@ float divHeight;
 //
 void setup() {
   // fullScreen(); // Use the full screen
-  size(700, 700);
+  size(700, 700); // I can't be bothered to make the tictactoe board not be the entire window
   int appWidth = width; // displayWidth
   int appHeight = height; // displayHeight
   int shorterSide = (appWidth > appHeight) ? appHeight : appWidth;
